@@ -3,14 +3,22 @@ class DosesController < ApplicationController
 
   def new
     @dose = Dose.new
+    @array_ingredients = []
+    @ingredients = Ingredient.all
+    @ingredients.each do |ingredient|
+      @array_ingredients << ingredient
+    end
     @cocktail = Cocktail.find(params[:cocktail_id])
   end
 
   def create
     @dose = Dose.new(dose_params)
-    @dose.cocktail = Cocktail.find(params[:cocktail_id])
+    # @ingredient = Ingredient.find(params[:ingredient_id])
+    @cocktail = Cocktail.find(params[:cocktail_id])
+    # @dose.ingredient = @ingredient
+    @dose.cocktail = @cocktail
     if @dose.save
-
+      redirect_to cocktail_path(@cocktail)
     else
       render "new"
     end
@@ -27,6 +35,6 @@ class DosesController < ApplicationController
   end
 
   def dose_params
-    params.require(:dose).permit(:description)
+    params.require(:dose).permit(:description, :ingredient_id)
   end
 end
