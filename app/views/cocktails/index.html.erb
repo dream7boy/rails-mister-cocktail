@@ -8,6 +8,7 @@
               <%= cl_image_tag cocktail.photo.path, width: 50, height: 50, crop: :fill %>
             <% end %>
             <%= link_to cocktail.name, cocktail_path(cocktail) %>
+            <%= link_to "x", cocktail_path(cocktail), method: :delete, data: { confirm: "Are you sure?" } %>
           </li>
         <% end %>
         <%= link_to "make a new cocktail", new_cocktail_path %>
