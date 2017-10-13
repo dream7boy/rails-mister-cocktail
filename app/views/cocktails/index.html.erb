@@ -3,7 +3,12 @@
     <div class="row">
       <ul>
         <% @cocktails.each do |cocktail| %>
-          <li><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
+          <li>
+            <% if cocktail.photo? %>
+              <%= cl_image_tag cocktail.photo.path, width: 50, height: 50, crop: :fill %>
+            <% end %>
+            <%= link_to cocktail.name, cocktail_path(cocktail) %>
+          </li>
         <% end %>
         <%= link_to "make a new cocktail", new_cocktail_path %>
       </ul>
