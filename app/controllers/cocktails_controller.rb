@@ -6,7 +6,7 @@ class CocktailsController < ApplicationController
   end
 
   def show
-    # byebug
+    @dose = Dose.new
   end
 
   def new
