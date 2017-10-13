@@ -1,0 +1,9 @@
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path cocktail.photo.path, width: 400, height: 400, crop: :fit %>')">
+  <div class="card-category"><%= cocktail.name %></div>
+  <div class="card-description">
+    <h2>Nice Cocktail</h2>
+    <p>Very cool Cocktail, the best</p>
+  </div>
+  <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+  <%= link_to "", cocktail_path(cocktail), class: "card-link" %>
+</div>

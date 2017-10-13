@@ -1,17 +1,10 @@
 <div class="container" id="cards">
   <h2 class="text-center">All Cocktails</h2>
     <div class="row">
-      <ul>
-        <% @cocktails.each do |cocktail| %>
-          <li>
-            <% if cocktail.photo? %>
-              <%= cl_image_tag cocktail.photo.path, width: 50, height: 50, crop: :fill %>
-            <% end %>
-            <%= link_to cocktail.name, cocktail_path(cocktail) %>
-            <%= link_to "x", cocktail_path(cocktail), method: :delete, data: { confirm: "Are you sure?" } %>
-          </li>
-        <% end %>
-        <%= link_to "make a new cocktail", new_cocktail_path %>
-      </ul>
+      <% @cocktails.each do |c| %>
+        <div class="col-xs-12 col-sm-4">
+          <%= render "components/card", cocktail: c %>
+        </div>
+      <% end %>
     </div>
 </div>
